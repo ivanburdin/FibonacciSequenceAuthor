@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\FibonacciSequenceAuthor.DomainServices\FibonacciSequenceAuthor.DomainServices.csproj"/>
+        <ProjectReference Include="..\FibonacciSequenceAuthor.ExternalServices\FibonacciSequenceAuthor.ExternalServices.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NSwag.AspNetCore" Version="13.15.10"/>
+        <PackageReference Include="NSwag.MSBuild" Version="13.15.10">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="FibonacciSequenceAssistantServiceConfiguration.cs">
+            <DependentUpon>FibonacciSequenceAssistantClient.cs</DependentUpon>
+        </Compile>
+        <Compile Update="FibonacciSequenceAssistantGeneratedClient.cs">
+            <DependentUpon>FibonacciSequenceAssistantClient.cs</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+
+    <Target Name="NSwag" BeforeTargets="AfterBuild" Condition="'$(TF_BUILD)'!='True'">
+        <!--    Uncomment for generating json settings-->
+
+        <!--        <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe) new /runtime:Net50"> -->
+        <!--            <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />-->
+        <!--            <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />-->
+        <!--        </Exec>-->
+
+        <!--    Uncomment for generating client from swagger-->
+
+        <!--    reviewer: Commented for build without dependencies-->
+
+        <!--        <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Net50) run nswag.json /variables:Configuration=$(Configuration) /runtime:Net50">-->
+        <!--            <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode"/>-->
+        <!--            <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput"/>-->
+        <!--        </Exec>-->
+
+    </Target>
+
+</Project>
