@@ -26,7 +26,12 @@ namespace FibonacciSequenceAuthor.Presentation.RabbitListeners
             _logger = logger;
 
             var factory = new ConnectionFactory
-                {HostName = _options.Host, UserName = _options.User, Password = _options.Password};
+            {
+                HostName = _options.Host,
+                UserName = _options.User,
+                Password = _options.Password
+            };
+
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
         }
