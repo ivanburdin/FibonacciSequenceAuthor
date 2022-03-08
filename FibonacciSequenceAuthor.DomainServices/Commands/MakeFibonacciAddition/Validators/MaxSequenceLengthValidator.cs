@@ -12,7 +12,7 @@ namespace FibonacciSequenceAuthor.DomainServices.Commands.MakeFibonacciAddition.
             RuleFor(x => x.RequestedLength)
                 .LessThanOrEqualTo(MaxFibonacciSequenceLength)
                 .WithMessage(command =>
-                    $"Max sequence length must be equal or lower than {MaxFibonacciSequenceLength}" +
+                    $"Sequence length must be equal or lower than {MaxFibonacciSequenceLength}" +
                     $",you entered: {command.RequestedLength}");
         }
     }
